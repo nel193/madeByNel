@@ -1,9 +1,14 @@
 import React from "react"
 import Aframe from "aframe"
+import Helmet from "react-helmet"
 import "../assets/styles/App.scss"
 const App = () => {
     return (
         <div>
+            <Helmet>
+                <title>De prueba</title>
+                <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+            </Helmet>
             <a-scene embedded vr-mode-ui="enabled: false">
                 <a-sky color="#2B2D2F"></a-sky>
                 <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
