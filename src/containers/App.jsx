@@ -8,7 +8,7 @@ const App = () => {
             <Helmet>
                 <title>De prueba</title>
                 <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
-                <script src="js/three.min.js"></script>
+                <script src="https://unpkg.com/three@0.119.0/build/three.module.js"></script>
             </Helmet>
             <a-scene embedded vr-mode-ui="enabled: false">
                 <a-sky color="#2B2D2F"></a-sky>
