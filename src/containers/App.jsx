@@ -3,9 +3,9 @@ import Aframe from "aframe"
 import "../assets/styles/App.scss"
 const App = () => {
     return (
-        <>
-            <h1>Esto funciona?</h1>
-        </>
+        <div>
+            <h1>Hola</h1>
+        </div>
     )
 }
 
