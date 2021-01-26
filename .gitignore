@@ -75,5 +75,10 @@ yarn-error.log
 # Build
 dist/
 
-# Descarga fallida
-libs/
+# StorybookTrain
+.storybook/*
+storybookTrain/
+
+#Webpack
+webpack.config.dll.js
+webpack.config.prod.js
