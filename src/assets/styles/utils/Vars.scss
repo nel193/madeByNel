@@ -1,0 +1,91 @@
+/*--------------------*\
+    $colors
+\*-------------------*/
+/**
+* Color schema
+*/
+
+$color-brand: #138EE8;
+
+$light-color1: #4DB8E5;
+$light-color2: #95D6EA;
+$light-color3: #C4E5EE;
+$light-color4: #DAEFF1;
+
+$dark-color1: #0C66C0;
+$dark-color2: #06429D;
+$dark-color3: #150273;
+$dark-color4: #1F005C;
+
+$complementary-color1: #FFC806;
+$complementary-color2: #F2A94A;
+$complementary-color3: #F4B176;
+$complementary-color4: #F5D1BC;
+
+$gray-color: #648196;
+
+$lightgray-color1: #849BA9;
+$lightgray-color2: #9FB0B7;
+$lightgray-color3: #BDC5C7;
+$lightgray-color4: #E5E6E6;
+
+$darkgray-color1: #546D83;
+$darkgray-color2: #3F5369;
+$darkgray-color3: #2A384C;
+$darkgray-color4: #1B2237;
+
+/**
+* texture-colors
+*/
+
+$color-alert: #F67600;
+$color-warning:#FF0633;
+$color-error: #A0A0A0;
+$color-info: #06ADF3;
+$color-success: #04FFF0;
+
+/**
+* Typography
+*/
+$title-font: 'Merriweather Sans', sans-serif;
+$title-fontweight:800;
+$title-hero1:'Carter One', cursive;
+$title-hero2:'Press Start 2P', cursive;
+$base-font: 'Noto Sans KR', sans-serif;
+$base-fontsize: 1rem;
+$text-fontweight: 400;
+$anchor-fontweight: 500;
+$utils-fontweight: 700;
+
+/**
+* Buttons
+*/
+$button-padding: 10px;
+$button-margin: 1.5rem;
+$button-fontsize: $base-fontsize * 1.5;
+$button-borderradius: 50px;
+$button-outlinebackground:rgba(255, 255, 255, .5);
+
+/**
+* Grids
+*/
+
+$base-gridmobile: 3% 94% 3%;
+$hero-gridmobile: 10% repeat(4, 20%) 10%;
+
+/**
+* Constants
+*/
+
+
+
+
+
+
+
+
+
+
+
+ 
+

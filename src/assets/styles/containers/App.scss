@@ -1,0 +1,17 @@
+@import '../base/Fonts.scss';
+@import '../utils/Vars.scss';
+@import '../base/Layout.scss';
+@import '../utils/Animations.scss';
+body {
+    margin: 0;
+    background: linear-gradient(154deg, $light-color4,$light-color1);
+    background-size: 200% 200%;
+    -webkit-animation: background 0s ease infinite;
+    -moz-animation: background 0s ease infinite;
+    animation: background 10s ease infinite;
+}
+
+#app{
+    display:grid;
+    grid-template-columns: $base-gridmobile;
+}

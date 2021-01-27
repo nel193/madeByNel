@@ -1,0 +1,33 @@
+@import '../utils/Vars.scss';
+.btn {
+    border: none;
+    border-bottom:5px solid;
+    color: white;
+    padding: 7px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: $button-fontsize;
+    font-family: $base-font; 
+    font-weight:$utils-fontweight;
+    border-radius: $button-borderradius;
+    cursor: pointer;
+    min-width: 8rem;
+}
+.btn.outline{
+    border:1px solid;
+    background-color: $button-outlinebackground;
+}
+
+.primary{ 
+    background-color:$complementary-color1;
+    border-bottom-color: $darkgray-color4;
+    color:$darkgray-color4;
+}
+.secondary{ background-color:$light-color1}
+.tertiary{background-color:$lightgray-color4}
+
+.outline.primary{ border-color:$complementary-color1}
+.outline.secondary{ border-color:$light-color1}
+.outline.tertiary{border-color:$lightgray-color4}
+
