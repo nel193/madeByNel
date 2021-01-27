@@ -1,0 +1,6 @@
+[submodule "lib/react-helmet"]
+	path = lib/react-helmet
+	url = https://github.com/nfl/react-helmet.git
+[submodule "lib/three.js"]
+	path = lib/three.js
+	url = https://github.com/supermedium/three.js.git
