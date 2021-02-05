@@ -5,7 +5,7 @@ import Pixels3 from '../components/Pixels3'
 const About = ()  => {
     return (
         <>
-            <Pixels3 />
+            <h1>Hola</h1>
         </>
     )
 }
