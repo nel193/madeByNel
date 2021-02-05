@@ -1,0 +1,40 @@
+@import '../utils/Vars.scss';
+
+.description__container{
+    grid-column: 2/5;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color:$darkgray-color3;
+    &-contextbox {
+        grid-column:2/4;
+        background:$complementary-color4;
+        border-radius:100px 0 0 100px;
+        margin: 0 0 2rem 0;
+    }
+    &-titlebox{
+        text-align:center;
+        grid-column:1/4;
+        background:$lightgray-color4;
+        margin: 0 0 1rem 0;
+    }
+    &-subtitle{
+        text-align:center;
+        background:$lightgray-color4;
+        margin: 0 0 1rem 0;
+        &.right{
+            grid-column:1/3;
+            border-radius:0 20px 20px 0;
+        }
+        &.left{
+            grid-column:2/4;
+            border-radius:20px 0 0 20px;    
+        }
+    }
+
+    
+}
+.profile-pic{
+    max-width:8rem;
+    border-radius: 50%;
+}
+

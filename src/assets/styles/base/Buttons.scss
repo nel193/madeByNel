@@ -1,8 +1,12 @@
 @import '../utils/Vars.scss';
 .btn {
     border: none;
+    border-top:4px solid;
     border-bottom:5px solid;
+    border-radius: $button-borderradius;
+    box-shadow: 0px 0px 0px 1px $black-color;
     color: white;
+    -webkit-text-stroke: 1px $black-color;
     padding: 7px 25px;
     text-align: center;
     text-decoration: none;
@@ -10,9 +14,28 @@
     font-size: $button-fontsize;
     font-family: $base-font; 
     font-weight:$utils-fontweight;
-    border-radius: $button-borderradius;
+    transform: skew(10deg);
+    -ms-transform: skewX(10deg);
+    -webkit-transform: skewX(10deg);
     cursor: pointer;
     min-width: 8rem;
+    position: relative;
+    &:after{
+        content:'';
+        border-radius: $button-borderradius;
+        position:absolute;
+        bottom:-5px;
+        top:-4px;
+        left:-1px;
+        right:-1px;
+        z-index: -1;
+        box-shadow: 0px 0px 10px $black-color;    
+    }
+    &__text{
+        transform: skew(-10deg);
+        -ms-transform: skewX(-10deg);
+        -webkit-transform: skewX(-10deg);
+    }
 }
 .btn.outline{
     border:1px solid;
@@ -22,7 +45,6 @@
 .primary{ 
     background-color:$complementary-color1;
     border-bottom-color: $darkgray-color4;
-    color:$darkgray-color4;
 }
 .secondary{ background-color:$light-color1}
 .tertiary{background-color:$lightgray-color4}

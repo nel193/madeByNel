@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 
 import '../assets/styles/components/Blobs.scss'
@@ -14,10 +14,13 @@ const shapes = {
     }
   };
 
-const Blobs = (props) => {
-    const {firstColor, secondColor} = props
+const Blobs = () => {
+    
     return(
-        <span className='blob__container'>
+        <motion.span 
+        className='blob__container'
+        animate={{scale:[0, 1]}}
+        >
             <svg
                 width="334"
                 height="312"
@@ -28,7 +31,7 @@ const Blobs = (props) => {
                 <motion.path
                 initial={shapes.one}
                 animate={shapes.two}
-                transition={{ yoyo: Infinity, duration: 4, ease: "easeInOut" }}
+                transition={{ repeat: Infinity, repeatType:'reverse', duration: 3, ease: "easeInOut" }}
                 fill-rule="evenodd"
                 clip-rule="evenodd"
                 fill="url(#paint0_linear)"
@@ -42,12 +45,12 @@ const Blobs = (props) => {
                     y2="330.049"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stopColor={firstColor} />
-                    <stop offset="1" stopColor={secondColor} />
+                    <stop stopColor="#FFC806" />
+                    <stop offset="1" stopColor="#F5D1BC" />
                 </linearGradient>
                 </defs>
             </svg>   
-        </span>
+        </motion.span>
     )
 }
 export default Blobs

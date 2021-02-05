@@ -1,13 +1,19 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
+import {useIntersection} from 'react-use'
 import '../assets/styles/components/Header.scss'
-import logo from '../assets/statics/logo.jpg'
+import Switchmode from './Switchmode'
+import logo from '../assets/statics/logo.png'
 
 const Header = () => (
         <header className='header'>
             <picture className='header__pic'>
                 <source/>
-                <img className='header__pic-logo' src={logo} alt=""/>
+                <Link to='/'>
+                    <img className='header__pic-logo' src={logo} alt=""/>
+                </Link>
             </picture>
+            <Switchmode/>
         </header>
 )
 

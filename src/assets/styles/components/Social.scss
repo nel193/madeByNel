@@ -1,0 +1,8 @@
+@import '../utils/Vars.scss';
+
+.social__container{
+    grid-column:2/5;
+    min-height: 3rem;
+    background-color: $darkgray-color3;
+    display:flex;
+}

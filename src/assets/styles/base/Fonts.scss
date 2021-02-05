@@ -1,1 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Merriweather+Sans:ital,wght@1,800&family=Noto+Sans+KR:wght@400;500;700&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Merriweather+Sans:ital,wght@1,800&family=Noto+Sans+KR:wght@400;500;700;900&family=Press+Start+2P&display=swap');
+@import '../utils/Vars.scss';
+
+h2, h3, h4, h5, h6{font-family: $title-font;}
+ p, span, input, a, textarea {font-family: $base-font;}
