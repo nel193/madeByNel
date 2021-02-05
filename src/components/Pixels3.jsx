@@ -215,7 +215,6 @@ const Pixels3 = () => {
     const canvasRef = useRef()
     const container = useRef()
 
-    window.addEventListener('resize', initializeCanvas(ctx, canvas))
 
     useEffect(()=>{
         const canvasContainer= container.current;
@@ -233,6 +232,7 @@ const Pixels3 = () => {
             mouse.y = event.y + canvas.clientTop
         })
         
+        window.addEventListener('resize', initializeCanvas(ctx, canvas))
         window.addEventListener('load', initializeCanvas(ctx, canvas), {
             once: true
         })
