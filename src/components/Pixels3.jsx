@@ -224,12 +224,12 @@ const Pixels3 = () => {
         canvas.height = window.innerHeight
 
         window.addEventListener('mousemove', (e) => {
-            mouse.x = event.x + canvas.clientLeft
-            mouse.y = event.y + canvas.clientTop
+            mouse.x = e.x + canvas.clientLeft
+            mouse.y = e.y + canvas.clientTop
         })
         window.addEventListener('touchstart', (e) => {
-            mouse.x = event.x + canvas.clientLeft
-            mouse.y = event.y + canvas.clientTop
+            mouse.x = e.x + canvas.clientLeft
+            mouse.y = e.y + canvas.clientTop
         })
         
         window.addEventListener('resize', initializeCanvas(ctx, canvas))

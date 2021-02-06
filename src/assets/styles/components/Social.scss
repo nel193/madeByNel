@@ -1,8 +1,14 @@
 @import '../utils/Vars.scss';
 
-.social__container{
-    grid-column:2/5;
+.social__container {
     min-height: 3rem;
     background-color: $darkgray-color3;
+}
+
+.icons__container {
     display:flex;
+    justify-content:space-evenly;
+    &-icon{
+        margin:1rem 0 0 0;
+    }
 }

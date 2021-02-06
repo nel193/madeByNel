@@ -5,8 +5,8 @@
     height: 3.5rem;
     position: fixed;
     bottom: 0;
-    border-top: 1px solid $lightgray-color4;
-    background-color: $darkgray-color3;
+    border-top: 2px solid $white-color;
+    background-color: $darkgray-color4;
     z-index: 100;
     &__list{
         display:flex;
@@ -18,5 +18,7 @@
         font-family: $base-font;
         font-weight: $utils-fontweight;
         text-decoration: none;
+        display:flex;
+        align-items:center;
     } 
 }

@@ -13,7 +13,9 @@ const Header = () => (
                     <img className='header__pic-logo' src={logo} alt=""/>
                 </Link>
             </picture>
-            <Switchmode/>
+            <div>
+                <Switchmode/>
+            </div>
         </header>
 )
 

@@ -19,7 +19,7 @@ const Hero = () => {
                 <div>
                     <Hero_title1 />
                 </div>
-                <div >
+                <div>
                     <Hero_title2 />
                     <Blobs/>
                 </div>
