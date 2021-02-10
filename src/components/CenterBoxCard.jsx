@@ -3,7 +3,7 @@ import React from 'react'
 import '../assets/styles/components/CenterBoxDesc.scss'
 
 
-const CenterBoxDesc = (props) => {
+const CenterBoxCard = (props) => {
     const {img, text,} = props
     return (
         <div className='description__boxcenter' >
@@ -22,4 +22,4 @@ const CenterBoxDesc = (props) => {
     )
 }
 
-export default CenterBoxDesc
+export default CenterBoxCard

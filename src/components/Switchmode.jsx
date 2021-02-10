@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 const Switchmode = () => {
     const [darkMode, setDarkMode] = useState(false)
@@ -7,8 +8,8 @@ const Switchmode = () => {
         setDarkMode(!darkMode)
     }
     return (
-        <button type="button" onClick={handleClick}>
-            {darkMode ? "Dark Mode" : "Light Mode"}
+        <button className='btn outline secondary' onClick={handleClick}>
+            {darkMode ? <FontAwesomeIcon icon={["fas", "moon"]} size="sm" /> : <FontAwesomeIcon icon={["fas", "sun"]} size="sm" />}
         </button>
     )
 }

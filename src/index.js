@@ -1,16 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {library} from '@fortawesome/fontawesome-svg-core'
+import ThemeContext from './context/ThemeContext'
 import {
     fab, faGithub,
     faLinkedinIn,
     faBehance
     } from '@fortawesome/free-brands-svg-icons'
 import {
-    faPaperPlane,
     faAddressCard,
+    faMoon,
+    faPaperPlane,
+    faPalette,
     faRocket,
-    faPalette
+    faSun
     } from '@fortawesome/free-solid-svg-icons'
 import App from './router/App'
 
@@ -21,6 +24,15 @@ library.add(
     faBehance,
     faAddressCard,
     faRocket,
-    faPalette
+    faPalette,
+    faMoon,
+    faSun
     )
-ReactDOM.render(<App />, document.getElementById('app'))
+
+
+ReactDOM.render(
+    <ThemeContext.Provider value='red'>
+        <App />
+    </ThemeContext.Provider>
+    ,
+    document.getElementById('app'))

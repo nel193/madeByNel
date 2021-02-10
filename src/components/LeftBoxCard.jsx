@@ -1,14 +1,15 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 import '../assets/styles/components/LeftBoxDesc.scss'
-const LeftBoxDesc = (props) => {
-    const {img, imgName, text, subtitle} = props
+const LeftBoxCard = (props) => {
+    const {img, imgName, text, subtitle, direction} = props
     return (
-        <div className="description__boxleft">
+        <Link to={direction} className="description__boxleft">
             <div className="description__boxleft-subtitlebox">
-                <p>
+                <h2>
                     {subtitle}
-                </p>
+                </h2>
             </div>
             <div className="description__boxleft-imagebox"
             alt={imgName}
@@ -22,7 +23,7 @@ const LeftBoxDesc = (props) => {
                 {text}
                 </p>
             </div>
-        </div>
+        </Link>
     )
 }
-export default LeftBoxDesc
+export default LeftBoxCard

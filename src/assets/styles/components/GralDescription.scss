@@ -1,6 +1,7 @@
 @import '../utils/Vars.scss';
 
 .description__container{
+    margin:3rem 0 0 0;
     grid-column: 2/5;
     display:grid;
     grid-template-columns: repeat(3, 1fr);

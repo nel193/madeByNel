@@ -33,9 +33,9 @@ const Hero = () => {
             </div>
             <div className='hero__buttons'>
                 <div className='hero__buttons-left'>
-                    <Link to='/about' className='btn primary' >
-                        <div className='btn__text'>
-                            ABOUT
+                    <Link to='/about' className='btn cta primary' >
+                        <div className='cta__text'>
+                            ABOUT ME
                         </div>
                     </Link>
                 </div>

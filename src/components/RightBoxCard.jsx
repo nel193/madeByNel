@@ -1,12 +1,13 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 import ProfilePic from '../assets/statics/profile-pic.jpg'
 import '../assets/styles/components/RightBoxDesc.scss'
 
-const RightBoxDesc = (props) => {
-    const {img, text, subtitle} = props
+const RightBoxCard = (props) => {
+    const {img, text, subtitle, direction} = props
     return (
-        <div className="description__boxright">
+        <Link to={direction} className="description__boxright">
             <div className="description__boxright-subtitlebox">
                 <h2>
                     {subtitle}
@@ -23,7 +24,7 @@ const RightBoxDesc = (props) => {
                     {text}
                 </p>
             </div>
-        </div>
+        </Link>
     )
 }
-export default RightBoxDesc
+export default RightBoxCard

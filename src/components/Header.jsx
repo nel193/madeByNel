@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link} from 'react-router-dom'
 import {useIntersection} from 'react-use'
 import '../assets/styles/components/Header.scss'
+import ThemeContext from '../context/ThemeContext'
 import Switchmode from './Switchmode'
 import logo from '../assets/statics/logo.png'
 
@@ -13,7 +14,7 @@ const Header = () => (
                     <img className='header__pic-logo' src={logo} alt=""/>
                 </Link>
             </picture>
-            <div>
+            <div className='header__switchmode'>
                 <Switchmode/>
             </div>
         </header>
