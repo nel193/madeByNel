@@ -1,5 +1,6 @@
 {
   "name": "made_by_nel",
+  "hamepage": "https://madebynel.com",
   "version": "1.0.0",
   "description": "portfolio",
   "main": "src/index.js",
