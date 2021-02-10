@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, HashRouter} from 'react-router-dom'
 import Layout from '../components/Layout'
 import Home from '../containers/Home'
 import About from '../containers/About'
@@ -13,7 +13,7 @@ import '../assets/styles/containers/App.scss'
 
 const App = () => {
     return(
-        <BrowserRouter>
+        <HashRouter>
             <Layout>
                 <Switch>
                     <Route exact path="/" component={Home} />
@@ -23,7 +23,7 @@ const App = () => {
                     <Route exact path="/fontana" component={FontanaDev} />
                 </Switch>
             </Layout>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
