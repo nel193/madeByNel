@@ -5,7 +5,7 @@ import '../assets/styles/components/FontanaPixels.scss'
 const FontanaPixels = () => {
     // const png = new Image();
     // png.src = SrcFontana
-    
+
     //performance critical parameters
     const pixelStep = 1//default 1; increase for images of higher resolution
     const maxParticlesToProcessInOneFrame = 40000
@@ -14,7 +14,7 @@ const FontanaPixels = () => {
     //additional performance oriented paramteres
     // Max distance, past that the force will be 0
     const maxDistance = 144
-    const mouseRadius = 100
+    const mouseRadius = 30
     const colorTreshold = 10
     const colorAlphaTreshold = 150
     const zoomLevel = 1
@@ -152,22 +152,19 @@ const FontanaPixels = () => {
         
         setTimeout(function () {
             drawFrame(ctx, video);
-        }, 1000);
+        }, 10);
 
         cancelAnimationFrame(animationFrame)
         let particles = []
-
+        // let particlesMatrix = []
+        // particlesMatrix.length = video.height
+        // for (let i = 0; i < particlesMatrix.length; i++) {
+        //     let tmpArr = particlesMatrix[i] = []
+        //     tmpArr.length = video.width
+        // }
         
         function drawImage() {
-            // let particlesMatrix = []
-            // particlesMatrix.length = video.height
-            // for (let i = 0; i < particlesMatrix.length; i++) {
-            //     let tmpArr = particlesMatrix[i] = []
-            //     tmpArr.length = video.width
-            // }
             context.drawImage(video, 0, 0);
-
-
             for (let y = 0, y2 = imageData.height; y < y2; y += pixelStep) {
                 for (let x = 0, x2 = imageData.width; x < x2; x += pixelStep) {
                     let colorIndex = (y * 4 * imageData.width) + (x * 4)
@@ -240,7 +237,6 @@ const FontanaPixels = () => {
     const container = useRef()
     const camContainer = useRef()
     let cam
-
     
 
     useEffect(()=>{
@@ -248,8 +244,6 @@ const FontanaPixels = () => {
         const canvasContainer= container.current;
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d')
-        // cam.width = window.innerWidth;
-        // cam.height = window.innerHeight;
         console.log(cam.videoWidth)
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -258,26 +252,22 @@ const FontanaPixels = () => {
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.x + canvas.clientLeft
             mouse.y = e.y + canvas.clientTop
-            drawFrame(ctx, cam)
+            // drawFrame(ctx, cam)
         })
+
         window.addEventListener('touchstart', (e) => {
             mouse.x = e.x + canvas.clientLeft
             mouse.y = e.y + canvas.clientTop
-            drawFrame(ctx, cam)
+            // drawFrame(ctx, cam)
         })
+    
         
         window.addEventListener('resize', drawFrame(ctx, cam))
         window.addEventListener('load', drawFrame(ctx, cam), {
             once: true
         })
-        
-        // setTimeout(function () {
-        //     drawFrame(ctx, cam);
-        // }, 10);
 
         drawFrame(ctx, cam);
-
-        return cam
     }, [drawFrame])
     
     return (
