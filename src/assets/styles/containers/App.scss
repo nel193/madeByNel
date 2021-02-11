@@ -14,3 +14,10 @@ body {
         padding:0 0 5rem 0;
     }
 }
+
+@media only screen and (orientation:portrait){
+  body {
+    height: 100vw;
+    transform: rotate(90deg);
+  }
+}
