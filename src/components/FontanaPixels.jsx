@@ -5,7 +5,7 @@ import '../assets/styles/components/FontanaPixels.scss'
 const FontanaPixels = () => {
     // const png = new Image();
     // png.src = SrcFontana
-
+    
     //performance critical parameters
     const pixelStep = 1//default 1; increase for images of higher resolution
     const maxParticlesToProcessInOneFrame = 40000
@@ -14,7 +14,7 @@ const FontanaPixels = () => {
     //additional performance oriented paramteres
     // Max distance, past that the force will be 0
     const maxDistance = 144
-    const mouseRadius = 50
+    const mouseRadius = 100
     const colorTreshold = 10
     const colorAlphaTreshold = 150
     const zoomLevel = 1
@@ -152,11 +152,22 @@ const FontanaPixels = () => {
         
         setTimeout(function () {
             drawFrame(ctx, video);
-        }, 1);
+        }, 1000);
 
         cancelAnimationFrame(animationFrame)
         let particles = []
+
+        
         function drawImage() {
+            // let particlesMatrix = []
+            // particlesMatrix.length = video.height
+            // for (let i = 0; i < particlesMatrix.length; i++) {
+            //     let tmpArr = particlesMatrix[i] = []
+            //     tmpArr.length = video.width
+            // }
+            context.drawImage(video, 0, 0);
+
+
             for (let y = 0, y2 = imageData.height; y < y2; y += pixelStep) {
                 for (let x = 0, x2 = imageData.width; x < x2; x += pixelStep) {
                     let colorIndex = (y * 4 * imageData.width) + (x * 4)
@@ -196,11 +207,10 @@ const FontanaPixels = () => {
             }
             animateFrame()
         }
-            context.drawImage(video, 0, 0);
-            drawImage();
+
+        drawImage();
     }
 
-    // optional:[{sourceId:videoSource}]
     function startCamera() {
         const constraints = {
             advanced: [{
@@ -243,40 +253,40 @@ const FontanaPixels = () => {
         console.log(cam.videoWidth)
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
-        let particlesMatrix = []
-        particlesMatrix.length = cam.height
         
-        for (let i = 0; i < particlesMatrix.length; i++) {
-            let tmpArr = particlesMatrix[i] = []
-            tmpArr.length = cam.width
-        }
-
         // Play video
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.x + canvas.clientLeft
             mouse.y = e.y + canvas.clientTop
+            drawFrame(ctx, cam)
         })
         window.addEventListener('touchstart', (e) => {
             mouse.x = e.x + canvas.clientLeft
             mouse.y = e.y + canvas.clientTop
+            drawFrame(ctx, cam)
         })
         
         window.addEventListener('resize', drawFrame(ctx, cam))
         window.addEventListener('load', drawFrame(ctx, cam), {
             once: true
         })
+        
+        // setTimeout(function () {
+        //     drawFrame(ctx, cam);
+        // }, 10);
 
-        // drawFrame(ctx, cam);
+        drawFrame(ctx, cam);
 
         return cam
-    }, [])
+    }, [drawFrame])
     
     return (
-        <section ref={container} className=''>
-            <canvas className='' ref={canvasRef} />
-            <video ref={camContainer} width='400' height='200'/> 
-            <button onClick={startCamera}>Prender Cam</button>
+        <section ref={container} className='atomizer__container'>
+            <div className='atomizer__button-container'>
+                <button className='btn secondary' onClick={startCamera}>Atomizar</button>
+            </div>
+            <video className='atomizer__cam' ref={camContainer} width='400' height='200'/> 
+            <canvas className='atomizer__canvas' ref={canvasRef} />
             {/* 202 31 39 1 */}
            
         </section>

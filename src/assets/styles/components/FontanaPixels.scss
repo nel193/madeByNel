@@ -1,17 +1,22 @@
 @import '../utils/Vars.scss';
 
-.particles__container{
-    // grid-column: 2/5;
-    // position: absolute;
-    // height:100% !important;
-    // bottom:0;
-    // left:0;
-    // width:100% !important;
-    // opacity:.9;
-    &-canvas{
-        // position:absolute;
-        // top:0;
-        // left: 0;
-        // width: 100%;
+.atomizer__container{
+    position:relative;
+    padding:2rem 0 0 0 !important;
+    .atomizer__button-container{
+        display:flex;
+        justify-content: center;
+    }
+    .atomizer__cam{
+        position: absolute;
+        bottom: 10;
+        z-index:2;
+    }
+    .atomizer__canvas{
+        position:relative;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
     }
 }
