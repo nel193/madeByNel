@@ -206,7 +206,6 @@ const Pixels3 = () => {
             animateFrame()
         }
 
-        console.log('page has loaded');
         ctx.drawImage(png, 0, 0, canv.width, canv.height);
         drawImage();
     }
