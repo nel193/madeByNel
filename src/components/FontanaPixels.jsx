@@ -19,10 +19,19 @@ const FontanaPixels = () => {
         }, 10);
     }
 
+    // optional:[{sourceId:videoSource}]
     function startCamera() {
-        cam.play();
+        const constraints = {
+            advanced: [{
+                facingMode: "environment"
+            }]
+        };
         if (navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({video: true, audio: false})
+            navigator.mediaDevices
+            .getUserMedia({
+                video: constraints, 
+                audio: false
+            })
             .then(initCamera)
             .catch(console.error);
         }
@@ -31,8 +40,8 @@ const FontanaPixels = () => {
     function initCamera(stream) {
         // deprecated  
         // video.src = window.URL.createObjectURL(stream);
-        
         cam.srcObject = stream;
+        cam.play();
         // console.log("hola")
     }
 
