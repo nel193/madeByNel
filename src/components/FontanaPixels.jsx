@@ -38,6 +38,10 @@ const FontanaPixels = () => {
         a: 255
     }
 
+    let particles = []
+
+    let animationFrame = null
+
     class Particle {
         constructor(x, y, color, imageData) {
             this.renderGroup = previousId++ % stationaryParticlesSkipFrames
@@ -137,76 +141,78 @@ const FontanaPixels = () => {
         }
     }
 
-    let animationFrame = null
-
-
-    function drawFrame(ctx, video) {
+    function drawImage(ctx, cam) {
+        cancelAnimationFrame(animationFrame)
         const context = ctx
         const imageBase= context.createImageData(context.canvas.width, context.canvas.height);
+        // const imageBase= context.drawImage(cam, 0, 0);
+        console.log(imageBase)
         for (let i = 0; i < imageBase.data.length; i++) {
-            imageBase.data[i] = (i + 1) % 4 ? 0 : 0 //R: 0, G: 0, B: 0, A: 255
+                imageBase.data[i] = (i + 1) % 4 ? 0 : 0 //R: 0, G: 0, B: 0, A: 255
         }
-        var imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
-
-        context.putImageData(imageData, 0, 0);
-        
-        setTimeout(function () {
-            drawFrame(ctx, video);
-        }, 10);
-
-        cancelAnimationFrame(animationFrame)
-        let particles = []
-        // let particlesMatrix = []
-        // particlesMatrix.length = video.height
-        // for (let i = 0; i < particlesMatrix.length; i++) {
-        //     let tmpArr = particlesMatrix[i] = []
-        //     tmpArr.length = video.width
-        // }
-        
-        function drawImage() {
-            context.drawImage(video, 0, 0);
-            for (let y = 0, y2 = imageData.height; y < y2; y += pixelStep) {
-                for (let x = 0, x2 = imageData.width; x < x2; x += pixelStep) {
-                    let colorIndex = (y * 4 * imageData.width) + (x * 4)
-                    let alphaColor = imageData.data[colorIndex + 3]
+        // const srcImgData = context.getImageData(0, 0, context.canvas.width, context.canvas.height)
+        // console.log(srcImgData)
+        function particularizer(srcImgData) {
+            for (let y = 0, y2 = srcImgData.height; y < y2; y += pixelStep) {
+                for (let x = 0, x2 = srcImgData.width; x < x2; x += pixelStep) {
+                    let colorIndex = (y * 4 * srcImgData.width) + (x * 4)
+                    let alphaColor = srcImgData.data[colorIndex + 3]
                     //ignore invisible pixels
                     if (alphaColor >= colorAlphaTreshold) {
                         let color = {
-                            r: imageData.data[colorIndex],
-                            g: imageData.data[colorIndex + 1],
-                            b: imageData.data[colorIndex + 2],
+                            r: srcImgData.data[colorIndex],
+                            g: srcImgData.data[colorIndex + 1],
+                            b: srcImgData.data[colorIndex + 2],
                             a: alphaColor
                         }
                         if (color.r >= colorTreshold || color.g >= colorTreshold || color.b >= colorTreshold) {
-                            let particle = new Particle(x * zoomLevel, y * zoomLevel, color, imageBase)
+                            let particle = new Particle(x * zoomLevel, y * zoomLevel, color, srcImgData)
                             particles.push(particle)
                         }
                     } /* These number effect png size but its to high */
                 }
             }
-
-            function animate() {
-                currentFrame++
-                if (currentFrame > stationaryParticlesSkipFrames) {
-                    currentFrame = 0
-                }
-                for (let i = 0; i < particles.length; i++) {
-                    particles[i].update()
-                }
-                ctx.putImageData(imageBase, 0, 0)
-            }
-
-            function animateFrame() {
-                animationFrame = requestAnimationFrame(() => {
-                    animate()
-                    animateFrame()
-                })
-            }
-            animateFrame()
         }
 
-        drawImage();
+        function animate() {
+            currentFrame++
+            if (currentFrame > stationaryParticlesSkipFrames) {
+                currentFrame = 0
+            }
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update()
+            }
+            // context.putImageData(imageBase, 0, 0)
+        }
+
+        function drawFrame(ctx, cam) {
+            ctx.drawImage(cam, 0, 0);
+            const imageData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.putImageData(imageData, 0, 0);
+            // particularizer(imageData)
+            animate()
+        }
+
+        function animateFrame() {
+            animationFrame = requestAnimationFrame(() => {
+                drawFrame(ctx, cam)
+                // animate()
+                animateFrame()
+            })
+        }
+        animateFrame()
     }
+
+    
+    // function drawFrame(ctx, video) {
+    //     const context = ctx
+    //     context.drawImage(video, 0, 0);
+    //     const imageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
+    //     context.putImageData(imageData, 0, 0);
+    //     // setTimeout(function () {
+    //     //     drawFrame(ctx, video);
+    //     // }, 10);
+    // }
 
     function startCamera() {
         const constraints = {
@@ -223,52 +229,47 @@ const FontanaPixels = () => {
             .then(initCamera)
             .catch(console.error);
         }
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x + canvas.clientLeft
+            mouse.y = e.y + canvas.clientTop
+        })
+
+        window.addEventListener('touchstart', (e) => {
+            mouse.x = e.x + canvas.clientLeft
+            mouse.y = e.y + canvas.clientTop
+        })
+    
+        
+        // window.addEventListener('resize', drawFrame(ctx, cam))
     }
 
     function initCamera(stream) {
-        // deprecated  
-        // video.src = window.URL.createObjectURL(stream);
         cam.srcObject = stream;
         cam.play();
-        // console.log("hola")
+        setTimeout(()=>{
+            drawImage(ctx, cam)
+        }, 1000)
     }
 
     const canvasRef = useRef()
     const container = useRef()
     const camContainer = useRef()
     let cam
-    
+    let canvas
+    let ctx
 
     useEffect(()=>{
         cam = camContainer.current;
         const canvasContainer= container.current;
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d')
+        canvas = canvasRef.current;
+        ctx = canvas.getContext('2d')
         console.log(cam.videoWidth)
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        
-        // Play video
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x + canvas.clientLeft
-            mouse.y = e.y + canvas.clientTop
-            // drawFrame(ctx, cam)
-        })
-
-        window.addEventListener('touchstart', (e) => {
-            mouse.x = e.x + canvas.clientLeft
-            mouse.y = e.y + canvas.clientTop
-            // drawFrame(ctx, cam)
-        })
-    
-        
-        window.addEventListener('resize', drawFrame(ctx, cam))
-        window.addEventListener('load', drawFrame(ctx, cam), {
-            once: true
-        })
-
-        drawFrame(ctx, cam);
-    }, [drawFrame])
+        console.log('ya esta montado')
+        // drawFrame(ctx, cam)
+    }, [drawImage])
     
     return (
         <section ref={container} className='atomizer__container'>
@@ -276,9 +277,7 @@ const FontanaPixels = () => {
                 <button className='btn secondary' onClick={startCamera}>Atomizar</button>
             </div>
             <video className='atomizer__cam' ref={camContainer} width='400' height='200'/> 
-            <canvas className='atomizer__canvas' ref={canvasRef} />
-            {/* 202 31 39 1 */}
-           
+            <canvas className='atomizer__canvas' ref={canvasRef} />           
         </section>
     )
 }

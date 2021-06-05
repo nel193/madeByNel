@@ -1,13 +1,14 @@
-import React from 'react'
+import React from 'react';
+import CvDescription from '../components/CV/CvDescription';
+import Social from '../components/Social';
 
-import CvDescription from '../components/CvDescription' 
 const Cv = () => {
-    return (
-        <>
-            <CvDescription
-            />
-        </>
-    )
-}
+  return (
+    <>
+      <CvDescription />
+      <Social />
+    </>
+  );
+};
 
-export default Cv
+export default Cv;

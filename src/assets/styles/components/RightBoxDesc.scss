@@ -11,7 +11,7 @@
         grid-column:1/2;
         grid-row:1/3;
         background:$complementary-color3;
-        min-height:2rem;
+        min-height:4rem;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -19,9 +19,16 @@
     &-subtitlebox{
         grid-column:2/4;
         min-height:2rem;
-        background:$lightgray-color3;
+        // max-height:10rem;
+        background-color:$darkgray-color4;
+        background-repeat:no-repeat;
+        background-size:cover;
         border-radius: 0 20px 0 0;
         padding:.5rem;
+        color:$white-color;
+        & h2 {margin-bottom:0;}
+        // & h2 {margin:.5rem 0 0 0;}
+        & h3 {margin:.5rem 0 0 0;}
     }
     &-textbox{
         grid-column:2/4;

@@ -1,16 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import PortfolioDescription from '../components/PortfolioDescription'
+import Social from '../components/Social'
 
 const Portfolio = props => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <PortfolioDescription />
+            <Social />
+        </>
     )
-}
-
-Portfolio.propTypes = {
-
 }
 
 export default Portfolio
