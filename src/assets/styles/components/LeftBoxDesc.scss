@@ -1,0 +1,46 @@
+@import '../utils/Vars.scss';
+
+.description__boxleft{
+    display:grid;
+    grid-column:1/4;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 0 4rem 1rem;
+    border-radius:20px 0 0 0;
+    box-shadow: 0px 5px 5px 3px $shadow-color;
+    text-decoration:none;
+    &-imagebox{
+        grid-column:3/4;
+        grid-row:1/3;
+        background:$complementary-color3;
+        min-height:2rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    &-subtitlebox{
+        grid-column:1/3;
+        min-height:4rem;
+        // max-height:10rem;
+        background-color:$darkgray-color4;
+        background-repeat:no-repeat;
+        background-size:cover;
+        border-radius: 20px 0 0;
+        padding:0 .5rem .5rem;
+        & h2 {text-align:right; margin-bottom:0;}
+        // & h2{text-align:right; margin:.5rem 0 0 0;}
+        & h3 {text-align:right; margin:.5rem 0 0 0;}
+    }
+    &-textbox{
+        padding:.5rem;
+        grid-column:1/3;
+        min-height:4rem;
+        background:$white-color;
+        & ul {
+            list-style-type:square;
+            padding-inline-start: 20px;
+        }
+        // & p{
+        //     color:$darkgray-color1;
+        // }
+    }
+}

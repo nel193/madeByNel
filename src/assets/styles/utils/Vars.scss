@@ -34,6 +34,13 @@ $darkgray-color2: #3F5369;
 $darkgray-color3: #2A384C;
 $darkgray-color4: #1B2237;
 
+$white-color: #fff;
+$black-color: #0e0e0e;
+$text-shadow:rgba(0, 0, 0, 0.5);
+$shadow-color:rgba(27, 35, 55, 0.5);
+
+
+
 /**
 * texture-colors
 */
@@ -50,12 +57,11 @@ $color-success: #04FFF0;
 $title-font: 'Merriweather Sans', sans-serif;
 $title-fontweight:800;
 $title-hero1:'Carter One', cursive;
-$title-hero2:'Press Start 2P', cursive;
 $base-font: 'Noto Sans KR', sans-serif;
 $base-fontsize: 1rem;
 $text-fontweight: 400;
 $anchor-fontweight: 500;
-$utils-fontweight: 700;
+$utils-fontweight: 900;
 
 /**
 * Buttons
@@ -63,14 +69,14 @@ $utils-fontweight: 700;
 $button-padding: 10px;
 $button-margin: 1.5rem;
 $button-fontsize: $base-fontsize * 1.5;
-$button-borderradius: 50px;
-$button-outlinebackground:rgba(255, 255, 255, .5);
+$button-borderradius: 10px;
+$button-outlinebackground:rgba(255, 255, 255, .2);
 
 /**
 * Grids
 */
 
-$base-gridmobile: 3% 94% 3%;
+$base-gridmobile: 2% repeat(3, 32%) 2%;
 $hero-gridmobile: 10% repeat(4, 20%) 10%;
 
 /**

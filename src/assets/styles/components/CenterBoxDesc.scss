@@ -1,0 +1,26 @@
+@import '../utils/Vars.scss';
+
+.description__boxcenter{
+    grid-column:1/4;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    margin:0 1rem 1.5rem;
+    border-radius:20px;
+    box-shadow: 0px 5px 10px 3px $shadow-color;
+    &-imagebox{
+        padding:0.5rem 1rem;
+        background-repeat: no-repeat;
+        background-size:cover;
+        grid-column:1/4;
+        background:$complementary-color3;
+        min-height:3rem;
+        border-radius:20px 20px 0 0;
+    }
+    &-textbox{
+        border-radius:0 0 20px 20px;
+        min-height:3rem;
+        grid-column:1/4;
+        background-color:$white-color;
+        padding:.5rem 1rem;
+    }
+}

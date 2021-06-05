@@ -1,0 +1,22 @@
+@import '../utils/Vars.scss';
+
+.atomizer__container{
+    position:relative;
+    padding:2rem 0 0 0 !important;
+    .atomizer__button-container{
+        display:flex;
+        justify-content: center;
+    }
+    .atomizer__cam{
+        position: absolute;
+        bottom: 10;
+        z-index:2;
+    }
+    .atomizer__canvas{
+        position:relative;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+    }
+}

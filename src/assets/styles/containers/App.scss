@@ -1,17 +1,39 @@
 @import '../base/Fonts.scss';
 @import '../utils/Vars.scss';
-@import '../base/Layout.scss';
-@import '../utils/Animations.scss';
-body {
-    margin: 0;
-    background: linear-gradient(154deg, $light-color4,$light-color1);
-    background-size: 200% 200%;
-    -webkit-animation: background 0s ease infinite;
-    -moz-animation: background 0s ease infinite;
-    animation: background 10s ease infinite;
+
+body {margin: 0;}
+
+h1::selection {
+    color: none;
+    background: none;
 }
 
-#app{
-    display:grid;
-    grid-template-columns: $base-gridmobile;
+/* For Mozilla Firefox */
+h1::-moz-selection {
+    color: none;
+    background: none;
 }
+h1.texture{color:$white-color}
+h1.hero-title__container{
+    font-family: $title-hero1;
+    font-weight: 800;
+}
+h2, h3, h4, h5, h6{font-family: $title-font;}
+h2.texture,h3.texture{color:$lightgray-color4}
+
+p, input, textarea, li {
+    font-family: $base-font;
+    color:$darkgray-color1;
+}
+ul{
+    list-style-type:none;
+    padding:0;
+}
+a {font-family: $base-font;}
+a.link {color: $color-info}
+
+// @media (min-width: 960px){
+//     p, input, textarea {
+//         font-size:1.3rem;
+//     }
+// }
