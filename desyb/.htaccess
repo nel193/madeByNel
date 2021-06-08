@@ -1,0 +1,6 @@
+# DO NOT REMOVE THIS LINE AND THE LINES BELLOW SSL_REDIRECT:desyb.madebynel.com
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} (www\.)?desyb.madebynel.com
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# DO NOT REMOVE THIS LINE AND THE LINES BELLOW SSL_REDIRECT:desyb.madebynel.com
